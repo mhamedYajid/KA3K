@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-carte-gateau',
@@ -8,12 +8,10 @@ import { Component } from '@angular/core';
 
 })
 
+
 export class CarteGateauComponent{
-Gateau: any = {
-"Id" : 1,
-"Nom" : "Briwate",
-"Type": "Oriental",
-"Prix" : 1.50
-}
+
+  @Input() gateau : any;
+
 
 }

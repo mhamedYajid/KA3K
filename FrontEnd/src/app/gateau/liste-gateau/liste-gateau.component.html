@@ -1,1 +1,7 @@
-<p>liste-gateau works!</p>
+
+<div class="row">
+  <div class="shadow-lg col-sm-4 p-3" *ngFor="let element of gateaux">
+    <app-carte-gateau [gateau] = element ></app-carte-gateau>
+  </div>
+ </div>
+
