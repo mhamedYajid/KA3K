@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ImmoStick": {
+    "KA3K": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ImmoStick",
+            "outputPath": "dist/KA3K",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ImmoStick:build"
+            "browserTarget": "KA3K:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ImmoStick:build:production"
+              "browserTarget": "KA3K:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ImmoStick:build"
+            "browserTarget": "KA3K:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ImmoStick:serve"
+            "devServerTarget": "KA3K:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ImmoStick:serve:production"
+              "devServerTarget": "KA3K:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "ImmoStick"
+  "defaultProject": "KA3K"
 }

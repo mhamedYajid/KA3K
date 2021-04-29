@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ImmoStick'`, () => {
+  it(`should have as title 'KA3K'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ImmoStick');
+    expect(app.title).toEqual('KA3K');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ImmoStick app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('KA3K app is running!');
   });
 });
