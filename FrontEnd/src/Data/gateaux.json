@@ -1,0 +1,51 @@
+[
+  {
+    "Id": 1,
+    "Nom": "Aniversaire",
+    "Type": "Evenement",
+    "Prix": 250,
+    "ImagePath": "assets/images/aniversaire.jpeg"
+  },
+  {
+    "Id": 2,
+    "Nom": "Ka3b Alghazal",
+    "Type": "Oriental",
+    "Prix": 1.4,
+    "ImagePath": "assets/images/ka3b-ghzal.jpg"
+  },
+  {
+    "Id": 3,
+    "Nom": "Ghouriba",
+    "Type": "Oriental",
+    "Prix": 1.4,
+    "ImagePath": "assets/images/ghriba.jpg"
+  },
+  {
+    "Id": 4,
+    "Nom": "Sellou",
+    "Type": "Oriental",
+    "Prix": 7.5,
+    "ImagePath": "assets/images/sellou.jpg"
+  },
+  {
+    "Id": 5,
+    "Nom": "Faqass",
+    "Type": "Oriental",
+    "Prix": 1.3,
+    "ImagePath": "assets/images/feqqas.jpg"
+  },
+  {
+    "Id": 6,
+    "Nom": "Chabbakia",
+    "Type": "Oriental",
+    "Prix": 1.55,
+    "ImagePath":"assets/images/1200px-Chebakia.jpg"
+  },
+  {
+    "Id": 7,
+    "Nom": "Briwate amandes",
+    "Type": "Oriental",
+    "Prix": 1.7,
+    "ImagePath": "assets/images/briouates-amandes-miel.jpg"
+  }
+]

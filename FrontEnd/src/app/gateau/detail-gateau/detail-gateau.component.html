@@ -1,0 +1,8 @@
+<p>detail-gateau works!</p>
+<h3>Id = {{gateauId}}</h3>
+<p> <button (click)="onChangeId()" class="btn btn-primary">Change_Id</button><br><br>
+<button routerLink="/detail-gateau/1" class="btn btn-primary">1</button>
+<button routerLink="/detail-gateau/2" class="btn btn-primary">2</button>
+<button routerLink="/detail-gateau/3" class="btn btn-primary">3</button>
+<button [routerLink]="['/detail-gateau/','4' ]" class="btn btn-primary">4</button>
+</p>
