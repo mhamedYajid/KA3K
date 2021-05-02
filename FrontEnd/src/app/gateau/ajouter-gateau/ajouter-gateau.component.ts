@@ -1,5 +1,6 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./ajouter-gateau.component.scss']
 })
 export class AjouterGateauComponent implements OnInit {
-
+  @ViewChild('Form') ajouterGateauForm: NgForm;
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
-onBack(){
-  this.router.navigate(['/']);
+
+  enregistrerProduit(){
+    console.log("felicitations , le produit est envoyé au serveur");
+    console.log(this.ajouterGateauForm);
+  }
+
+  onBack(){
+    this.router.navigate(['/']);
 }
 }

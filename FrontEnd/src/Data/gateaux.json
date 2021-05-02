@@ -1,13 +1,15 @@
 [
   {
     "Id": 1,
-    "Nom": "Aniversaire",
-    "Type": "Evenement",
-    "Prix": 250,
-    "ImagePath": "assets/images/aniversaire.jpeg"
+    "Categorie": 1,
+    "Nom": "Aniversaire classic",
+    "Type": "Aniversaire",
+    "Prix": 190,
+    "ImagePath": "assets/images/aniversaire_classic.jpeg"
   },
   {
     "Id": 2,
+    "Categorie": 2,
     "Nom": "Ka3b Alghazal",
     "Type": "Oriental",
     "Prix": 1.4,
@@ -15,6 +17,7 @@
   },
   {
     "Id": 3,
+    "Categorie": 2,
     "Nom": "Ghouriba",
     "Type": "Oriental",
     "Prix": 1.4,
@@ -22,6 +25,7 @@
   },
   {
     "Id": 4,
+    "Categorie": 2,
     "Nom": "Sellou",
     "Type": "Oriental",
     "Prix": 7.5,
@@ -29,6 +33,7 @@
   },
   {
     "Id": 5,
+    "Categorie": 2,
     "Nom": "Faqass",
     "Type": "Oriental",
     "Prix": 1.3,
@@ -36,16 +41,43 @@
   },
   {
     "Id": 6,
+    "Categorie": 2,
     "Nom": "Chabbakia",
     "Type": "Oriental",
     "Prix": 1.55,
-    "ImagePath":"assets/images/1200px-Chebakia.jpg"
+    "ImagePath":"assets/images/Chebakia.jpg"
   },
   {
     "Id": 7,
+    "Categorie": 2,
     "Nom": "Briwate amandes",
     "Type": "Oriental",
     "Prix": 1.7,
     "ImagePath": "assets/images/briouates-amandes-miel.jpg"
+  },
+  {
+    "Id": 8,
+    "Categorie": 2,
+    "Nom": "cookie géant",
+    "Type": "biscuit",
+    "Prix": 2.90,
+    "ImagePath": "assets/images/Cookie-géant.jpg"
+  },
+  {
+    "Id": 9,
+    "Categorie": 1,
+    "Nom": "gateau aniversaire",
+    "Type": "gateau",
+    "Prix": 150,
+    "ImagePath": "assets/images/gateau_aniversaire.jpeg"
+  },
+  {
+    "Id": 10,
+    "Categorie": 1,
+    "Nom": "hexagones",
+    "Type": "gateau",
+    "Prix": 25,
+    "ImagePath": "assets/images/hexagone.png"
   }
 ]
+

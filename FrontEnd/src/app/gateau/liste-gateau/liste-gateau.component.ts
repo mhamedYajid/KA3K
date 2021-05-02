@@ -1,6 +1,7 @@
 import { Igateau } from './../Igateau.interface';
 import { PatisserieService } from './../../services/patisserie.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-liste-gateau',
@@ -9,13 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeGateauComponent implements OnInit {
   gateaux: Array<Igateau>;
+  categorie = 1;
 
-  constructor(private patisserieService: PatisserieService) {}
+  constructor(private patisserieService: PatisserieService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.patisserieService.getAllGateaux().subscribe(
+    if(this.route.snapshot.url.toString()=="evenements")
+    this.categorie = 1
+    else this.categorie = 2;
+
+    this.patisserieService.getAllGateaux(this.categorie).subscribe(
       (donnees) => {
         this.gateaux = donnees;
+
       },
       (error) => {
         console.log("httperror : ");

@@ -10,6 +10,7 @@ import {CarteGateauComponent} from './gateau/carte-gateau/carte-gateau.component
 import { ListeGateauComponent } from './gateau/liste-gateau/liste-gateau.component'
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DetailGateauComponent } from './gateau/detail-gateau/detail-gateau.component';
+import { FormsModule } from '@angular/forms';
 
 export const routes: Routes = [
 {path: '', component: ListeGateauComponent},
@@ -36,7 +37,8 @@ export const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [PatisserieService],
   bootstrap: [AppComponent]

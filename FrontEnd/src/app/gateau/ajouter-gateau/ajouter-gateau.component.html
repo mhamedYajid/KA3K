@@ -1,5 +1,31 @@
-<p>
-  ajouter-gateau works!
-  <button class="btn btn-primary" (click)="onBack()">Retour</button>
-</p>
+<div class="card">
+<div class="card-header">
+  Ajouter un produit
+</div>
+<div class="card-body">
+  <form (ngSubmit)="enregistrerProduit()" #Form="ngForm">
+    <div class="form-group col-12">
+      <label for="Nom">Nom</label>
+      <input type="text" class="form-control" ngModel name="Nom" required
+      #propNom="ngModel" minlength="3">
+      <span *ngIf="!propNom.valid && propNom.touched" class="error-block">
+        <span *ngIf="propNom.errors.required">Veuillez inscrire votre nom svp</span>
+        <span *ngIf="propNom.errors.minlength">Le nom doit avoir au moins 3 caractères</span>
+      </span>
+    </div>
+    <div class="form-group col-12">
+      <label for="Type">Type</label>
+      <input type="text" class="form-control" ngModel name="Type" required>
+    </div>
+    <div class="form-group col-12">
+      <label for="Prix">Prix</label>
+      <input type="text" class="form-control" ngModel name="Prix" required>
+    </div>
+    <div class="form-group col-12">
+      <button [disabled]="!Form.valid" type="submit" class="btn btn-primary mr-2">Enregister</button>
+      <button type="reset" class="btn btn-primary">Anuler</button>
+    </div>
+  </form>
+</div>
 
+</div>

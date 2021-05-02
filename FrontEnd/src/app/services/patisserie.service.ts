@@ -11,11 +11,12 @@ export class PatisserieService {
 
   constructor(private http : HttpClient) { }
 
-  getAllGateaux() : Observable<Igateau[]>{
+  getAllGateaux(categorie: number) : Observable<Igateau[]>{
     return this.http.get('Data/gateaux.json').pipe(
       map((data)=>{
         const gateauxArray : Array<Igateau> = [];
         for(const id in data){
+          if(data.hasOwnProperty(id) && data[id].Categorie == categorie)
           gateauxArray.push(data[id]);
         }
         return gateauxArray;
