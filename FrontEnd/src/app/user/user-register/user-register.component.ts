@@ -1,3 +1,5 @@
+import { User } from './../../Model/user';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -7,8 +9,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-registrationForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  // Propriétés
+  registrationForm: FormGroup;
+  user : User;
+  userService: UserService;
+  userSubmitted : boolean;
+
+
+  constructor(private fb: FormBuilder, uService: UserService) {
+    this.userService = uService;
+  }
 
   ngOnInit(): void {
 
@@ -63,7 +73,17 @@ registrationForm: FormGroup;
 
 
   onSubmit(){
-    console.log(this.registrationForm)
+    console.log(this.registrationForm);
+
+    this.userSubmitted = true;
+    if(this.registrationForm.valid){
+      this.user = Object.assign(this.user, this.registrationForm.value);
+      this.userService.addUser(this.user);
+      this.registrationForm.reset();
+      this.userSubmitted = false;
+    }
   }
+
+
 
 }

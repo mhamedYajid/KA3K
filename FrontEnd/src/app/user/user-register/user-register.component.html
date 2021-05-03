@@ -9,12 +9,12 @@
           <div class="form-group col-12">
             <label for="nom" class="form-label">Nom</label>
             <input type="text" class="form-control" formControlName="nom" >
-            <span *ngIf="!nom.valid && nom.touched" class="error-block">Veuillez entrer un nom svp</span>
+            <span *ngIf="!nom.valid && (nom.touched || userSubmitted)" class="error-block">Veuillez entrer un nom svp</span>
           </div>
           <div class="form-group col-12">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" formControlName="email" >
-            <span *ngIf="!email.valid && email.touched" class="error-block">
+            <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">
               <span *ngIf="email.hasError('required')"> Veuillez entrer un email svp</span>
               <span *ngIf="email.hasError('email')"> Veuillez entrer un email valide svp</span>
             </span>
@@ -22,7 +22,7 @@
           <div class="form-group col-12">
             <label for="motDePasse" class="form-label">Mot de passe</label>
             <input type="password" class="form-control" formControlName="motdepasse">
-            <span *ngIf="!motdepasse.valid && motdepasse.touched" class="error-block">
+            <span *ngIf="!motdepasse.valid && (motdepasse.touched || userSubmitted)" class="error-block">
               <span *ngIf="motdepasse.errors['required']">
                   Veuillez entrer un mot de passe
               </span >
@@ -34,7 +34,7 @@
           <div class="form-group col-12">
             <label for="cMotdepasse" class="form-label">Confirmer mot de passe</label>
             <input type="password" class="form-control" formControlName="cMotdepasse">
-            <span *ngIf="!cMotdepasse.valid && cMotdepasse.touched" class="error-block">
+            <span *ngIf="!cMotdepasse.valid && (cMotdepasse.touched || userSubmitted)" class="error-block">
                 <span *ngIf="cMotdepasse.errors['required']">
                   Veuillez confirmer le mot de passe
                 </span>
@@ -46,8 +46,8 @@
           <div class="form-group col-12">
             <label for="telephone" class="form-label">Telephone</label>
             <input type="text" class="form-control" formControlName="telephone">
-            <span *ngIf="!telephone.valid && telephone.touched" class="error-block">
-              <span *ngIf="telephone.errors.required">
+            <span *ngIf="!telephone.valid && (telephone.touched || userSubmitted)" class="error-block">
+              <span *ngIf="telephone.errors['required']">
                 Le numéro de téléphone est requis
               </span>
               <span *ngIf="telephone.errors.minlength">
