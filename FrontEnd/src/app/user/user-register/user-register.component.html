@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-6 m-auto">
+    <div class="card m-auto">
+      <div class="card-head text-center">
+        Inscription
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group col-12">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" formControlName="nom" >
+            <span *ngIf="!nom.valid && nom.touched" class="error-block">Veuillez entrer un nom svp</span>
+          </div>
+          <div class="form-group col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="email" >
+            <span *ngIf="!email.valid && email.touched" class="error-block">
+              <span *ngIf="email.hasError('required')"> Veuillez entrer un email svp</span>
+              <span *ngIf="email.hasError('email')"> Veuillez entrer un email valide svp</span>
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <label for="motDePasse" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" formControlName="motdepasse">
+            <span *ngIf="!motdepasse.valid && motdepasse.touched" class="error-block">
+              <span *ngIf="motdepasse.errors['required']">
+                  Veuillez entrer un mot de passe
+              </span >
+              <span *ngIf="motdepasse.errors['minlength']">
+                Le mot de passe doit avoir au moins 8 caractères
+              </span>
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <label for="cMotdepasse" class="form-label">Confirmer mot de passe</label>
+            <input type="password" class="form-control" formControlName="cMotdepasse">
+            <span *ngIf="!cMotdepasse.valid && cMotdepasse.touched" class="error-block">
+                <span *ngIf="cMotdepasse.errors['required']">
+                  Veuillez confirmer le mot de passe
+                </span>
+            </span>
+            <span *ngIf="registrationForm.hasError('notmatched') && cMotdepasse.valid" class="error-block">
+              les mots de passes ne correspondent pas
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <label for="telephone" class="form-label">Telephone</label>
+            <input type="text" class="form-control" formControlName="telephone">
+            <span *ngIf="!telephone.valid && telephone.touched" class="error-block">
+              <span *ngIf="telephone.errors.required">
+                Le numéro de téléphone est requis
+              </span>
+              <span *ngIf="telephone.errors.minlength">
+                Le numéro de téléphone doit être de 10 chiffres minimum
+              </span>
+            </span>
+          </div>
+          <div class="form-control">
+            <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+            <button type="reset" class="btn btn-secondary ">Anuler</button>
+          </div>
+          Form values: {{registrationForm.value | json}} <br>
+          Form status: {{registrationForm.valid}}
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,16 +1,20 @@
-import { AjouterGateauComponent } from './gateau/ajouter-gateau/ajouter-gateau.component';
-import { PatisserieService } from './services/patisserie.service';
+import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import { PatisserieService } from './services/patisserie.service';
+
 import {CarteGateauComponent} from './gateau/carte-gateau/carte-gateau.component';
 import { ListeGateauComponent } from './gateau/liste-gateau/liste-gateau.component'
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DetailGateauComponent } from './gateau/detail-gateau/detail-gateau.component';
-import { FormsModule } from '@angular/forms';
+
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { AjouterGateauComponent } from './gateau/ajouter-gateau/ajouter-gateau.component';
 
 export const routes: Routes = [
 {path: '', component: ListeGateauComponent},
@@ -19,7 +23,10 @@ export const routes: Routes = [
 {path: 'assortiments-oriental', component: ListeGateauComponent},
 {path: 'ajouter-gateau', component: AjouterGateauComponent},
 {path: 'detail-gateau/:id', component: DetailGateauComponent},
+{path: 'login', component: UserLoginComponent},
+{path: 'register', component: UserRegisterComponent},
 {path: '**', component: ListeGateauComponent}
+
 
 ]
 
@@ -31,14 +38,17 @@ export const routes: Routes = [
     ListeGateauComponent,
       NavBarComponent,
       AjouterGateauComponent,
-      DetailGateauComponent
+      DetailGateauComponent,
+      UserLoginComponent,
+      UserRegisterComponent
 
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [PatisserieService],
   bootstrap: [AppComponent]
