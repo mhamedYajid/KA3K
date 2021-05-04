@@ -4,10 +4,15 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 //Les services
 import { PatisserieService } from './services/patisserie.service';
 import { UserService } from './services/user.service';
+import { AlertifyService } from './services/alertify.service';
+import { AuthService } from './services/auth.service';
 
 import { CarteGateauComponent } from './gateau/carte-gateau/carte-gateau.component';
 import { ListeGateauComponent } from './gateau/liste-gateau/liste-gateau.component';
@@ -49,8 +54,11 @@ export const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot()
   ],
-  providers: [PatisserieService, UserService],
+  providers: [PatisserieService, UserService, AlertifyService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

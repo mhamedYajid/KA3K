@@ -1,3 +1,4 @@
+import { AlertifyService } from './../services/alertify.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  utilisateurConnecte: string;
 
-  constructor() { }
+  constructor(private alertify: AlertifyService) { }
 
   ngOnInit() {
+  }
+
+  loggedIn(){
+
+    this.utilisateurConnecte = localStorage.getItem('token');
+    return this.utilisateurConnecte;
+  }
+
+  onLogout(){
+    localStorage.removeItem('token');
+    this.alertify.error('Vous êtes déconnecté')
   }
 
 }

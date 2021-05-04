@@ -1,34 +1,90 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">KA3K</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link"  routerLinkActive="active" routerLink="/evenements">Évenements</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/evenements"
+            >Évenements</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/assortiments">Asssortiments</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/assortiments"
+            >Asssortiments</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/assortiments-oriental">Asssortiments orientaux</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/assortiments-oriental"
+            >Asssortiments orientaux</a
+          >
         </li>
 
         <li class="nav-item">
-          <a class="nav-link " routerLinkActive="active" routerLink="/ajouter-gateau" >Ajouter un gateau</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/ajouter-gateau"
+            >Ajouter un gateau</a
+          >
         </li>
       </ul>
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="nav-item">
-          <a routerLinkActive="active" routerLink="/register" class="nav-link">S'inscrire</a>
+        <li *ngIf="!loggedIn()" class="nav-item">
+          <a routerLinkActive="active" routerLink="/register" class="nav-link"
+            >S'inscrire</a
+          >
         </li>
-        <li class="nav-item">
-          <a routerLinkActive="active" routerLink="/login"  class="nav-link">Connexion</a>
+        <li *ngIf="!loggedIn()" class="nav-item">
+          <a routerLinkActive="active" routerLink="/login" class="nav-link"
+            >Connexion</a
+          >
         </li>
+        <!-- <li *ngIf="loggedIn()" class="nav-item">
+          <a class="nav-link" (click)="onLogout()">Se déconnecter</a>
+        </li> -->
+        <div *ngIf="loggedIn()" class="dropdown mr-5" dropdown>
+          <a
+            href="#"
+            class="dropdown-toggle text-light"
+            dropdownToggle
+            (click)="(false)"
+          >
+            Bienvenu {{utilisateurConnecte}}
+          </a>
+          <div class="dropdown-menu" *dropdownMenu>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-tachometer-alt"></i>DashBoard
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="far fa-user-circle"></i>Mon profile
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-key"></i>Changer le mot de passe
+            </a>
+            <a (click)="onLogout()" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>Déconnexion
+            </a>
+          </div>
+        </div>
       </ul>
     </div>
   </div>
