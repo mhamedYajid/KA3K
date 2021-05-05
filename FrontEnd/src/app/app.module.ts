@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 //Les services
 import { PatisserieService } from './services/patisserie.service';
@@ -56,7 +57,8 @@ export const routes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   providers: [PatisserieService, UserService, AlertifyService, AuthService],
   bootstrap: [AppComponent],

@@ -5,6 +5,11 @@
     "Nom": "Aniversaire classic",
     "Type": "Aniversaire",
     "Prix": 190,
+    "PrixLivraison": 5,
+    "Conditionnement": "",
+    "LivraisonLaPoste": false,
+    "Description": "por les anivs",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/aniversaire_classic.jpeg"
   },
   {
@@ -13,6 +18,11 @@
     "Nom": "Ka3b Alghazal",
     "Type": "Oriental",
     "Prix": 1.4,
+    "PrixLivraison": 5,
+    "Conditionnement": "500",
+    "LivraisonLaPoste": true,
+    "Description": "cornes de gazelles",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/ka3b-ghzal.jpg"
   },
   {
@@ -21,6 +31,11 @@
     "Nom": "Ghouriba",
     "Type": "Oriental",
     "Prix": 1.4,
+    "PrixLivraison": 5,
+    "Conditionnement": "500",
+    "LivraisonLaPoste": true,
+    "Description": "le classic",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/ghriba.jpg"
   },
   {
@@ -29,6 +44,11 @@
     "Nom": "Sellou",
     "Type": "Oriental",
     "Prix": 7.5,
+    "PrixLivraison": 5,
+    "Conditionnement": "500",
+    "LivraisonLaPoste": true,
+    "Description": "pate de graines et amandes",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/sellou.jpg"
   },
   {
@@ -37,6 +57,11 @@
     "Nom": "Faqass",
     "Type": "Oriental",
     "Prix": 1.3,
+    "PrixLivraison": 5,
+    "Conditionnement": "500",
+    "LivraisonLaPoste": true,
+    "Description": "cornes de gazelles",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/feqqas.jpg"
   },
   {
@@ -45,6 +70,11 @@
     "Nom": "Chabbakia",
     "Type": "Oriental",
     "Prix": 1.55,
+    "PrixLivraison": 5,
+    "Conditionnement": "500",
+    "LivraisonLaPoste": true,
+    "Description": "Chabbakia au miel",
+    "Conseils": "ohpoihpoihj",
     "ImagePath":"assets/images/Chebakia.jpg"
   },
   {
@@ -53,6 +83,11 @@
     "Nom": "Briwate amandes",
     "Type": "Oriental",
     "Prix": 1.7,
+    "PrixLivraison": 5,
+    "Conditionnement": "500",
+    "LivraisonLaPoste": true,
+    "Description": "briwates aux amandes cuites au four",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/briouates-amandes-miel.jpg"
   },
   {
@@ -61,6 +96,11 @@
     "Nom": "cookie géant",
     "Type": "biscuit",
     "Prix": 2.90,
+    "PrixLivraison": 5,
+    "Conditionnement": "500",
+    "LivraisonLaPoste": true,
+    "Description": "cookie géant au chocolat",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/Cookie-géant.jpg"
   },
   {
@@ -69,6 +109,11 @@
     "Nom": "gateau aniversaire",
     "Type": "gateau",
     "Prix": 150,
+    "PrixLivraison": 5,
+    "Conditionnement": "1",
+    "LivraisonLaPoste": false,
+    "Description": "gateau à la crème patissière à la fraise",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/gateau_aniversaire.jpeg"
   },
   {
@@ -77,6 +122,11 @@
     "Nom": "hexagones",
     "Type": "gateau",
     "Prix": 25,
+    "PrixLivraison": 5,
+    "Conditionnement": "4",
+    "LivraisonLaPoste": true,
+    "Description": "gateau à la crème patissière vanille",
+    "Conseils": "ohpoihpoihj",
     "ImagePath": "assets/images/hexagone.png"
   }
 ]
