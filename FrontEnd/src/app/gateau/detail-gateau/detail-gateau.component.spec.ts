@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DetailGateauComponent } from './detail-gateau.component';
 
@@ -6,7 +6,7 @@ describe('DetailGateauComponent', () => {
   let component: DetailGateauComponent;
   let fixture: ComponentFixture<DetailGateauComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DetailGateauComponent ]
     })
