@@ -1,116 +1,200 @@
-<div class="card">
-  <div class="card-header">Ajouter un produit</div>
-  <div class="card-body">
-    <form (ngSubmit)="enregistrerProduit()" #Form="ngForm">
-      <div>
-        <tabset #staticTabs>
-          <tab heading="Infos de base">
-            <div class="form-group col-12">
-              <label for="Nom">Nom</label>
-              <input type="text" class="form-control"ngModel name="Nom" required  #propNom="ngModel"
-                minlength="3" />
-              <span *ngIf="!propNom.valid && propNom.touched" class="error-block" >
-                <span *ngIf="propNom.errors.required"
-                  >Veuillez inscrire le nom svp</span >
-                <span *ngIf="propNom.errors.minlength" >Le nom doit avoir au moins 3 caractères</span                >
-              </span>
-            </div>
+<div class="row mb-5">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header"><h3>Ajouter un produit</h3></div>
+      <div class="card-body">
+        <form (ngSubmit)="enregistrerProduit()" #Form="ngForm">
+          <div>
+            <tabset #staticTabs>
+              <tab heading="Infos de base">
+                <!-- Nom -->
+                <div class="form-group col-12">
+                  <label for="Nom">Nom</label>
+                    <input type="text" class="form-control" ngModel [(ngModel)]="GateauView.Nom"
+                    name="Nom" required #propNom="ngModel" minlength="3"/>
+                      <span *ngIf="!propNom.valid && propNom.touched" class="error-block">
+                          <span *ngIf="propNom.errors.required" >
+                            Veuillez inscrire le nom svp
+                          </span>
+                          <span *ngIf="propNom.errors.minlength">
+                            Le nom doit avoir au moins 3 caractères
+                          </span>
+                     </span>
+                </div>
+                <!-- Type -->
+                <div class="form-group col-12">
+                  <div class="btngroup" btnRadioGroup name="Type" [(ngModel)]="GateauView.Type">
+                    <label btnRadio="Evenement" class="btn btn-outline-primary mr-2"
+                      role="button" name="Type">Evenement
+                     </label>
+                    <label btnRadio="Gateau" class="btn btn-outline-primary"
+                      role="button" name="Type" >Gateau
+                     </label>
+                  </div>
+                </div>
+                <!-- Catégorie -->
+                <p>Catégorie</p>
+                <div class="form-group col-12">
+                  <div class="btn-group" btnRadioGroup name="Categorie"  [(ngModel)]="GateauView.Categorie">
+                    <label *ngFor="let categorie of Categories" btnRadio="categorie"
+                     class="btn btn-outline-primary mr-2" role="button"
+                     name="Categorie">{{ categorie }}</label>
+                  </div>
+                </div>
 
-            <div class="form-group col-12">
-              <label for="Type">Type</label>
-              <input type="text" class="form-control" ngModel name="Type" required />
-            </div>
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(1)"
+                  >
+                    Suivant
+                  </button>
+                </div>
+              </tab>
 
-            <div class="form-group col-12">
-              <label for="Categorie">Catégorie</label>
-              <input type="text" class="form-control" ngModel name="Categorie" required />
-            </div>
+              <tab heading="Prix et conditionnements">
+                <div class="form-group col-12">
+                  <pre>Livraison par la poste : </pre>
 
-            <div class="form-group col-12">
-              <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1)" >
-                Suivant
-              </button>
-            </div>
-          </tab>
+                  <div class="btn-group" btnRadioGroup name="LivraisonLaPoste">
+                    <label
+                      class="btn btn-outline-primary mr-2"
+                      btnRadio="1"
+                      role="button"
+                      >Oui</label
+                    >
+                    <label
+                      class="btn btn-outline-primary"
+                      btnRadio="2"
+                      role="button"
+                      >Non</label
+                    >
+                  </div>
+                </div>
 
-          <tab heading="Prix et conditionnements">
-
-            <div class="form-group col-12">
-              <pre>Livraison par la poste : </pre>
-              
-              <div class="btn-group" btnRadioGroup>
-                <label class="btn btn-outline-primary mr-2" btnRadio="1"  role="button"
-                  name="LivraisonLaPoste"  >Oui
-                </label >
-                <label class="btn btn-outline-primary" btnRadio="2" role="button"
-                  name="LivraisonLaPoste" >Non
-                 </label  >
-              </div>
-            </div>
-
-            <div class="form-group col-12">
-              <label for="Prix">Prix (Euros)</label>
-              <input type="text"class="form-control" ngModel name="Prix" required />
-            </div>
-            <div class="form-group col-12">
-              <label for="PrixLivraison">Prix Livraison (Euros)</label>
-              <input type="text" class="form-control" ngModel name="PrixLivraison"  required />
-            </div>
-            <div class="form-group col-12">
-              <label for="Conditionnement">Conditionnement :</label>
-              <input type="text" class="form-control" ngModel name="Conditionnement" required />
-            </div>
-            <div class="form-group col-12">
-              <button type="button" class="btn btn-primary btn-block" (click)="selectTab(2)" >
-                Suivant
-              </button>
-            </div>
-            <div class="form-group col-12">
-              <button type="button" class="btn btn-primary btn-block" (click)="selectTab(0)" >
-                Précédent
-              </button>
-            </div>
-          </tab>
-          <tab heading="commentaires">
-            <div class="form-group col-12">
-              <label for="Conseils">Conseils</label>
-              <textarea  type="text" class="form-control" ngModel name="Conseils" ></textarea>
-            </div>
-            <div class="form-group col-12">
-              <label for="Commentaire">Commentaire</label>
-              <textarea type="text" class="form-control" ngModel name="Commentaire" ></textarea>
-            </div>
-            <div class="form-group col-12">
-              <button  type="button" class="btn btn-primary btn-block" (click)="selectTab(3)" >
-                Suivant
-              </button>
-            </div>
-            <div class="form-group col-12">
-              <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1)" >
-                Précédent
-              </button>
-            </div>
-          </tab>
-          <tab heading="Photos" >Telechargements
-            <div class="form-group col-12">
-              <div class="photo-control">
-                <button type="button" class="mt-5">Téléverser</button>
-              </div>
-            </div>
-            <div class="form-group col-12">
-              <button type="button" class="btn btn-primary btn-block" (click)="selectTab(2)" >
-                Précédent
-              </button>
-              <button type="reset" class="btn btn-primary btn-block">
-                Annuler
-              </button>
-              <button type="submit" class="btn btn-primary btn-block" (click)="enregistrerProduit()" >
-                Enregistrer
-              </button>
-            </div>
-          </tab>
-        </tabset>
+                <div class="form-group col-12">
+                  <label for="Prix">Prix (Euros)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    ngModel
+                    name="Prix"
+                    required
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="PrixLivraison">Prix Livraison (Euros)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    ngModel
+                    name="PrixLivraison"
+                    required
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="Conditionnement">Conditionnement :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    ngModel
+                    name="Conditionnement"
+                    required
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(2)"
+                  >
+                    Suivant
+                  </button>
+                </div>
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(0)"
+                  >
+                    Précédent
+                  </button>
+                </div>
+              </tab>
+              <tab heading="commentaires">
+                <div class="form-group col-12">
+                  <label for="Conseils">Conseils</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    ngModel
+                    name="Conseils"
+                  ></textarea>
+                </div>
+                <div class="form-group col-12">
+                  <label for="Commentaire">Commentaire</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    ngModel
+                    name="Commentaire"
+                  ></textarea>
+                </div>
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(3)"
+                  >
+                    Suivant
+                  </button>
+                </div>
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(1)"
+                  >
+                    Précédent
+                  </button>
+                </div>
+              </tab>
+              <tab heading="Photos"
+                >Telechargements
+                <div class="form-group col-12">
+                  <div class="photo-control">
+                    <button type="button" class="mt-5">Téléverser</button>
+                  </div>
+                </div>
+                <div class="form-group col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    (click)="selectTab(2)"
+                  >
+                    Précédent
+                  </button>
+                  <button type="reset" class="btn btn-primary btn-block">
+                    Annuler
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Enregistrer
+                  </button>
+                </div>
+              </tab>
+            </tabset>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card-header">
+      <h3>Prévisualisation</h3>
+      <div>
+        <app-carte-gateau [gateau]="GateauView"></app-carte-gateau>
+      </div>
+    </div>
   </div>
 </div>
