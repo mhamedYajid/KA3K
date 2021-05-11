@@ -2,7 +2,7 @@
  <div class="card-img-wrapper">
   <img *ngIf="gateau.ImagePath" class="card-img-top" src="{{gateau.ImagePath}}"/>
   <img *ngIf="!gateau.ImagePath" class="card-img-top" src="assets/images/default_cake.jpg"/>
-  <ul class="list-inline text-center member-icons animate">
+  <ul *ngIf="!hideIcons" class="list-inline text-center member-icons animate">
     <li class="list-inline-item">
       <button class="btn btn-primary"><i class="fas fa-shopping-basket"> Ajouter</i></button>
     </li>
@@ -12,8 +12,9 @@
   </ul>
  </div>
   <div class="card-body p-1">
-    <h2>{{ gateau.Nom }}</h2>
-    <h3>{{ gateau.Type }}</h3>
-    <h3>{{ gateau.Prix}}€</h3>
+    <h1 class="mb-0">{{ gateau.Nom }}</h1>
+    <h6>{{gateau.Type }}</h6>
+    <h6>{{gateau.Prix | currency: 'EUR':'symbol':'2.2-2':'fr'}}</h6>
+    <h6 class="font-hilight">{{gateau.Categorie}}</h6>
   </div>
 </div>

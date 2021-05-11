@@ -1,4 +1,5 @@
-import { Igateau } from './../Igateau.interface';
+import { IGateauBase } from './../../Model/IGateauBase';
+
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -11,7 +12,8 @@ import { Component, Input } from '@angular/core';
 
 export class CarteGateauComponent{
 
-  @Input() gateau : Igateau;
+  @Input() gateau : IGateauBase;
+  @Input() hideIcons: boolean;
 
 
 }

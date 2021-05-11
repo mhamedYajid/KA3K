@@ -1,185 +1,143 @@
 <div class="row mb-5">
-  <div class="col-8">
+  <div class="col-8 shadow-lg p-0 bg-white">
     <div class="card">
       <div class="card-header"><h3>Ajouter un produit</h3></div>
       <div class="card-body">
-        <form (ngSubmit)="enregistrerProduit()" #Form="ngForm">
-          <div>
-            <tabset #staticTabs>
-              <tab heading="Infos de base">
+        <form (ngSubmit)="enregistrerProduit()" [formGroup]="FormAjoutGateau">
+          <div class="tab-panel">
+            <tabset class="member-tabset" #staticTabs>
+              <tab heading="Infos de base" formGroupName="InfosBasic" >
+
                 <!-- Nom -->
                 <div class="form-group col-12">
-                  <label for="Nom">Nom</label>
-                    <input type="text" class="form-control" ngModel [(ngModel)]="GateauView.Nom"
-                    name="Nom" required #propNom="ngModel" minlength="3"/>
-                      <span *ngIf="!propNom.valid && propNom.touched" class="error-block">
-                          <span *ngIf="propNom.errors.required" >
+                  <p for="Nom">Nom</p>
+                    <input type="text" class="form-control"  formControlName="nom"
+                    [(ngModel)]="GateauView.Nom"/>
+                      <span *ngIf="!Nom.valid && (Nom.touched || isSuivantClick) " class="error-block">
+                          <span *ngIf="Nom.errors?.required" >
                             Veuillez inscrire le nom svp
                           </span>
-                          <span *ngIf="propNom.errors.minlength">
+                          <span *ngIf="Nom.errors?.minlength">
                             Le nom doit avoir au moins 3 caractères
                           </span>
-                     </span>
+                       </span>
                 </div>
-                <!-- Type -->
-                <div class="form-group col-12">
-                  <div class="btngroup" btnRadioGroup name="Type" [(ngModel)]="GateauView.Type">
-                    <label btnRadio="Evenement" class="btn btn-outline-primary mr-2"
-                      role="button" name="Type">Evenement
-                     </label>
-                    <label btnRadio="Gateau" class="btn btn-outline-primary"
-                      role="button" name="Type" >Gateau
-                     </label>
-                  </div>
-                </div>
+
+                 <!-- Type -->
+                 <p>Type</p>
+                 <div class="form-group col-12">
+                   <div class="btn-group"  [(ngModel)]="GateauView.Type" btnRadioGroup name="Type"
+                    formControlName="type">
+                     <label *ngFor="let type of Types" [btnRadio]="type"
+                      class="btn btn-outline-primary mr-2" role="button"
+                      name="type">{{ type }}</label>
+                   </div>
+                   <div *ngIf="Type.invalid && isSuivantClick" class="error-block"> Veuillez choisir un Type</div>
+                 </div>
+
                 <!-- Catégorie -->
-                <p>Catégorie</p>
                 <div class="form-group col-12">
-                  <div class="btn-group" btnRadioGroup name="Categorie"  [(ngModel)]="GateauView.Categorie">
-                    <label *ngFor="let categorie of Categories" btnRadio="categorie"
-                     class="btn btn-outline-primary mr-2" role="button"
-                     name="Categorie">{{ categorie }}</label>
+                  <p for="Catégorie">Catégorie</p>
+                  <div class="btn-group" btnRadioGroup   [(ngModel)]="GateauView.Categorie"
+                    formControlName="categorie" name="Categorie">
+                    <label btnRadio="1" class="btn btn-outline-primary mr-2"
+                      role="button" name="Categorie">Evenement
+                     </label>
+                    <label btnRadio="2" class="btn btn-outline-primary"
+                      role="button" name="Categorie" >Gateau
+                     </label>
                   </div>
+                  <div *ngIf="Categorie.invalid && isSuivantClick" class="error-block"> Veuillez choisir une catégorie</div>
                 </div>
 
                 <div class="form-group col-12">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="selectTab(1)"
-                  >
-                    Suivant
+                  <button type="button" class="btn btn-primary btn-block"
+                   (click)="selectTab(1, _infosBasic.valid)">Suivant
                   </button>
                 </div>
+
               </tab>
 
-              <tab heading="Prix et conditionnements">
+              <tab heading="Prix et conditionnements" formGroupName="PrixConditionnement">
+                <!-- Livraison par la poste -->
                 <div class="form-group col-12">
-                  <pre>Livraison par la poste : </pre>
-
-                  <div class="btn-group" btnRadioGroup name="LivraisonLaPoste">
-                    <label
-                      class="btn btn-outline-primary mr-2"
-                      btnRadio="1"
-                      role="button"
-                      >Oui</label
-                    >
-                    <label
-                      class="btn btn-outline-primary"
-                      btnRadio="2"
-                      role="button"
-                      >Non</label
-                    >
+                  <p>Livraison par la poste : </p>
+                  <div class="btn-group" btnRadioGroup  formControlName="livraisonLaPoste">
+                    <label class="btn btn-outline-primary mr-2" btnRadio="true"
+                    role="button" name="livraisonLaPoste" >Oui
+                    </label>
+                    <label class="btn btn-outline-primary" btnRadio="false"
+                      role="button"  name="livraisonLaPoste" >Non
+                    </label>
+                  </div>
+                  <div *ngIf="!LivraisonLaPoste.valid && isSuivantClick" class="error-block">
+                    Veuillez choisir la livraison
                   </div>
                 </div>
-
+                <!-- Prix -->
                 <div class="form-group col-12">
                   <label for="Prix">Prix (Euros)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    ngModel
-                    name="Prix"
-                    required
-                  />
+                  <input type="text" class="form-control"  [(ngModel)]="GateauView.Prix"
+                  formControlName="prix"/>
+                  <div *ngIf="!Prix.valid && (isSuivantClick || Prix.touched)" class="error-block">Veuillez entrer le prix</div>
                 </div>
-                <div class="form-group col-12">
+                 <!-- Prix Livraison -->
+                <div *ngIf="FormAjoutGateau.value.PrixConditionnement.livraisonLaPoste === 'true'" class="form-group col-12">
                   <label for="PrixLivraison">Prix Livraison (Euros)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    ngModel
-                    name="PrixLivraison"
-                    required
-                  />
+                  <input type="text" class="form-control" formControlName="prixLivraison"/>
+                </div>
+                 <!-- Conditionnement -->
+                <div class="form-group col-12">
+                  <label for="conditionnement">Conditionnement :</label>
+                  <input type="text" class="form-control" formControlName="conditionnement"/>
+                  <div *ngIf="!Conditionnement.valid && (isSuivantClick || Conditionnement.touched)" class="error-block">Veuillez entrer le conditionnement</div>
                 </div>
                 <div class="form-group col-12">
-                  <label for="Conditionnement">Conditionnement :</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    ngModel
-                    name="Conditionnement"
-                    required
-                  />
+                  <button type="button" class="btn btn-primary btn-block"
+                   (click)="selectTab(0, true)">Précédent</button>
                 </div>
                 <div class="form-group col-12">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="selectTab(2)"
-                  >
-                    Suivant
-                  </button>
-                </div>
-                <div class="form-group col-12">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="selectTab(0)"
-                  >
-                    Précédent
-                  </button>
+                  <button type="button" class="btn btn-primary btn-block"
+                  (click)="selectTab(2, _prixConditionnement.valid)" > Suivant</button>
                 </div>
               </tab>
-              <tab heading="commentaires">
+              <!-- Commentaires -->
+              <tab heading="commentaires" formGroupName="Commentaires" >
                 <div class="form-group col-12">
                   <label for="Conseils">Conseils</label>
-                  <textarea
-                    type="text"
-                    class="form-control"
-                    ngModel
-                    name="Conseils"
-                  ></textarea>
+                  <textarea type="text" class="form-control" formControlName="conseils">
+                  </textarea>
                 </div>
                 <div class="form-group col-12">
-                  <label for="Commentaire">Commentaire</label>
-                  <textarea
-                    type="text"
-                    class="form-control"
-                    ngModel
-                    name="Commentaire"
-                  ></textarea>
+                  <label for="Commentaire">Description</label>
+                  <textarea type="text" class="form-control" formControlName="description">
+                  </textarea>
                 </div>
                 <div class="form-group col-12">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="selectTab(3)"
-                  >
-                    Suivant
+                  <button type="button" class="btn btn-primary btn-block"
+                    (click)="selectTab(1, true)">Précédent
                   </button>
                 </div>
                 <div class="form-group col-12">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="selectTab(1)"
-                  >
-                    Précédent
+                  <button type="button" class="btn btn-primary btn-block"
+                    (click)="selectTab(3, true)">Suivant
                   </button>
                 </div>
               </tab>
-              <tab heading="Photos"
-                >Telechargements
+              <tab heading="Photos" >Telechargements
                 <div class="form-group col-12">
-                  <div class="photo-control">
+                  <div class="photo-control" >
+                    <input type="hidden" formControlName="ImagePath"/>
                     <button type="button" class="mt-5">Téléverser</button>
                   </div>
                 </div>
                 <div class="form-group col-12">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="selectTab(2)"
-                  >
-                    Précédent
+                  <button type="button" class="btn btn-primary btn-block"
+                    (click)="selectTab(2, true)">Précédent
                   </button>
-                  <button type="reset" class="btn btn-primary btn-block">
-                    Annuler
+                  <button type="reset" class="btn btn-primary btn-block"> Annuler
                   </button>
-                  <button type="submit" class="btn btn-primary btn-block">
-                    Enregistrer
+                  <button type="submit" class="btn btn-primary btn-block">Enregistrer
                   </button>
                 </div>
               </tab>
@@ -192,9 +150,10 @@
   <div class="col-4">
     <div class="card-header">
       <h3>Prévisualisation</h3>
-      <div>
-        <app-carte-gateau [gateau]="GateauView"></app-carte-gateau>
       </div>
-    </div>
-  </div>
+        <div class="shadow-lg p-3 bg-white" >
+          <app-carte-gateau [gateau]="GateauView" [hideIcons]="true"></app-carte-gateau>
+        </div>
+   </div>
+
 </div>

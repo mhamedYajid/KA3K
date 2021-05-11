@@ -1,7 +1,7 @@
-import { Igateau } from './../Igateau.interface';
 import { PatisserieService } from './../../services/patisserie.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IGateau } from 'src/app/Model/IGateau';
 
 @Component({
   selector: 'app-liste-gateau',
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./liste-gateau.component.css'],
 })
 export class ListeGateauComponent implements OnInit {
-  gateaux: Array<Igateau>;
+  gateaux: Array<IGateau>;
   categorie = 1;
 
   constructor(private patisserieService: PatisserieService, private route: ActivatedRoute) {}
