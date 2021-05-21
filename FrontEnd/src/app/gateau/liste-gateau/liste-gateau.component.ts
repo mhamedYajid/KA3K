@@ -10,20 +10,20 @@ import { IGateau } from 'src/app/Model/IGateau';
 })
 export class ListeGateauComponent implements OnInit {
   gateaux: Array<IGateau>;
-  categorie = 1;
+  categorie : number;
 
   constructor(private patisserieService: PatisserieService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     if(this.route.snapshot.url.toString()=="evenements")
-    this.categorie = 1
-    else this.categorie = 2;
+    {this.categorie = 1}
+    else {this.categorie = 2;}
 
     this.patisserieService.getAllGateaux(this.categorie).subscribe(
       (donnees) => {
         this.gateaux = donnees;
-
-      },
+        console.log(donnees);
+        } ,
       (error) => {
         console.log("httperror : ");
         console.log(error);

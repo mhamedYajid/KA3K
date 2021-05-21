@@ -111,15 +111,16 @@ export class AjouterGateauComponent implements OnInit {
       this.patisserieService.ajouterGateau(this.gateau);
       this.alertyfy.success("felicitations , le produit est envoyé au serveur");
       console.log(this.FormAjoutGateau);
+
         if(this.Categorie.value == 1){
           this.router.navigate(['/evenements']);
         }
-        if(this.Categorie.value === 2){
+        if(this.Categorie.value == 2){
           this.router.navigate(['/assortiments']);
         }
       }
       else{
-        console.log("Veuillez fournir tous les champs requis avant d'enregistrer");
+        this.alertyfy.error("Veuillez fournir tous les champs requis avant d'enregistrer");
 
       }
 
@@ -127,6 +128,7 @@ export class AjouterGateauComponent implements OnInit {
 
 
   mapGateau(): void{
+    this.gateau.Id = this.patisserieService.newGateauId();
     this.gateau.Nom = this.Nom.value;
     this.gateau.Categorie = +this.Categorie.value;
     this.gateau.Conditionnement = +this.Conditionnement.value;

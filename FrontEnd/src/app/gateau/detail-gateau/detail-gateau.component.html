@@ -1,8 +1,56 @@
-<p>detail-gateau works!</p>
-<h3>Id = {{gateauId}}</h3>
-<p> <button (click)="onChangeId()" class="btn btn-primary">Change_Id</button><br><br>
-<button routerLink="/detail-gateau/1" class="btn btn-primary">1</button>
-<button routerLink="/detail-gateau/2" class="btn btn-primary">2</button>
-<button routerLink="/detail-gateau/3" class="btn btn-primary">3</button>
-<button [routerLink]="['/detail-gateau/','4' ]" class="btn btn-primary">4</button>
-</p>
+<div class="row shadow-lg">
+  <div class="col-sm-4 p-0">
+   <div class="card">
+    <div class="card-img-wrapper">
+      <img *ngIf="gateau.ImagePath" class="card-img-top" src="{{gateau.ImagePath}}"/>
+      <img *ngIf="!gateau.ImagePath" class="card-img-top" src="assets/images/default_cake.jpg"/>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title">{{gateau.Nom }}</h1>
+      <div>
+        <p>{{gateau.Description}}</p>
+      </div>
+      <div>
+        <strong>{{gateau.Prix  | currency: 'EUR':'symbol':'2.2-2':'fr'}}</strong>
+      </div>
+      <div>
+        <strong>Quantité: </strong>
+      </div>
+    </div>
+    <div class="card-footer">
+     <div class="btn-group d-flex">
+      <button class="btn btn-primary">Like</button>
+      <button class="btn btn-success">Acheter</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="col-sm-8 p-0">
+    <div class="tab-panel p-3">
+      <tabset class="member-tabset">
+        <tab heading="General">
+          <h1>Général</h1>
+          <div>
+            <strong>{{gateau.Description}}.</strong>
+          </div>
+        </tab>
+        <tab heading="Conseils">
+          <div>
+            <p>{{gateau.Conseils}}</p>
+          </div>
+        </tab>
+        <tab heading="Informations">
+          <div>
+            <p>Allergènes:
+              Oeuf, lait, fruits à coques (amande), soja, poisson.
+              Peut contenir des traces de graine de sésame.</p>
+          </div>
+        </tab>
+        <tab heading="Photos">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+        </tab>
+
+      </tabset>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -17,6 +18,7 @@ import { PatisserieService } from './services/patisserie.service';
 import { UserService } from './services/user.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
+import { DetailGateauResolverService } from './gateau/detail-gateau/detail-gateau-resolver.service';
 
 import { CarteGateauComponent } from './gateau/carte-gateau/carte-gateau.component';
 import { ListeGateauComponent } from './gateau/liste-gateau/liste-gateau.component';
@@ -26,6 +28,7 @@ import { DetailGateauComponent } from './gateau/detail-gateau/detail-gateau.comp
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { AjouterGateauComponent } from './gateau/ajouter-gateau/ajouter-gateau.component';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 
 //Le routage
@@ -35,7 +38,9 @@ export const routes: Routes = [
   { path: 'assortiments', component: ListeGateauComponent },
   { path: 'assortiments-oriental', component: ListeGateauComponent },
   { path: 'ajouter-gateau', component: AjouterGateauComponent },
-  { path: 'detail-gateau/:id', component: DetailGateauComponent },
+  { path: 'detail-gateau/:id',
+    component: DetailGateauComponent,
+    resolve: {gat: DetailGateauResolverService} },
   { path: 'login', component: UserLoginComponent },
   { path: 'register', component: UserRegisterComponent },
   { path: '**', component: ListeGateauComponent },
@@ -61,10 +66,11 @@ export const routes: Routes = [
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    NgxGalleryModule 
   ],
   providers: [{provide: LOCALE_ID, useValue: 'fr'},
-              PatisserieService, UserService, AlertifyService, AuthService],
+              PatisserieService, UserService, AlertifyService, AuthService, DetailGateauResolverService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
