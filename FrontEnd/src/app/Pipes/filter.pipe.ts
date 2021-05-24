@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { filter } from 'rxjs/operators';
+
 
 @Pipe({
   name: 'filter'
@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
     }
 
     for(const item of value){
-      if(item[nomPropriete].toLocaleLowerCase() === filterString.toLocaleLowerCase()){
+      if(item[nomPropriete].toLowerCase() === filterString.toLowerCase()){
         resultArray.push(item);
       }
     }

@@ -1,12 +1,23 @@
 <div class="row">
   <div class="co-sm3">
-    <label>Recherche par nom</label>
-    <input type="text" name="champRecherche" id="champRecherche_id">
+    <label>Recherche par nom : &nbsp; </label>
+    <input type="text" id="champRecherche_id" [(ngModel)]="ChampRecherche">
+    <button class="btn" type="button" (click)="onNomFilter()">Rechercher</button>
+    <button class="btn" type="button" (click)="onClearNomFilter()">Tous</button>
+    <label class="p-0">Tri par &nbsp;</label>
+    <select [(ngModel)]="triParParams">
+      <option value="Nom">Nom</option>
+      <option value="Prix">Prix</option>
+    </select>
+    <button type="button" (click)=" onTriDirection()">
+      <i *ngIf="triDirection === 'asc'" class="fa fa-sort-alpha-down"></i>
+      <i *ngIf="triDirection === 'desc'" class="fa fa-sort-alpha-up"></i>
+    </button>
   </div>
 </div>
 <div class="row">
   <div class="shadow-lg col-sm-4 p-3"
-   *ngFor="let element of gateaux|filter:'Oriental':'Type'|sort:['Nom', 'desc']">
+   *ngFor="let element of gateaux|filter:Nom:'Nom'|sort:[triParParams, triDirection]">
     <app-carte-gateau [gateau] = element ></app-carte-gateau>
   </div>
  </div>

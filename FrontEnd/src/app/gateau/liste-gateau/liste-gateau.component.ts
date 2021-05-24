@@ -11,6 +11,10 @@ import { IGateau } from 'src/app/Model/IGateau';
 export class ListeGateauComponent implements OnInit {
   gateaux: Array<IGateau>;
   categorie : number;
+  Nom: string = '';
+  ChampRecherche: string = '';
+  triParParams = 'Nom';
+  triDirection: string = 'asc';
 
   constructor(private patisserieService: PatisserieService, private route: ActivatedRoute) {}
 
@@ -29,5 +33,21 @@ export class ListeGateauComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onNomFilter(){
+this.Nom = this.ChampRecherche;
+  }
+  onClearNomFilter(){
+    this.Nom = '';
+    this.ChampRecherche = '';
+  }
+  onTriDirection(){
+   if(this.triDirection === 'desc'){
+     this.triDirection = 'asc';
+   }
+   else{
+     this.triDirection = 'desc';
+   }
   }
 }
