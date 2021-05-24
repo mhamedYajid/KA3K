@@ -15,7 +15,7 @@ export class ListeGateauComponent implements OnInit {
   constructor(private patisserieService: PatisserieService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    if(this.route.snapshot.url.toString()=="evenements")
+    if(this.route.snapshot.url.toString()==="evenements")
     {this.categorie = 1}
     else {this.categorie = 2;}
 

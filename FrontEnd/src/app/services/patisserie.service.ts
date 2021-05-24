@@ -28,7 +28,7 @@ export class PatisserieService {
         if(localGateaux){
           for(const id in localGateaux){
             if(categorie){
-              if(localGateaux.hasOwnProperty(id) && localGateaux[id].Categorie == categorie)
+              if(localGateaux.hasOwnProperty(id) && localGateaux[id]?.Categorie == categorie)
             gateauxArray.push(localGateaux[id]);
             }else{
               gateauxArray.push(localGateaux[id]);

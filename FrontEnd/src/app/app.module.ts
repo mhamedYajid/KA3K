@@ -29,6 +29,8 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { AjouterGateauComponent } from './gateau/ajouter-gateau/ajouter-gateau.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './Pipes/filter.pipe';
+import { SortPipe } from './Pipes/sort.pipe';
 
 
 //Le routage
@@ -56,6 +58,8 @@ export const routes: Routes = [
     DetailGateauComponent,
     UserLoginComponent,
     UserRegisterComponent,
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,7 @@ export const routes: Routes = [
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
-    NgxGalleryModule 
+    NgxGalleryModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'fr'},
               PatisserieService, UserService, AlertifyService, AuthService, DetailGateauResolverService],
